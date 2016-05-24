@@ -57,8 +57,8 @@ public class DB {
 		try{
 			query = connection.createStatement();
 			///TODO
-			int rs = query.executeUpdate("INSERT INTO `user` (`lastname`, `surname`,`age`, `login`, `pwd`)VALUE ('"+ user.getLastname()+"', '"+user.getSurname()+"', '"+user.getAge()+"', '"+user.getLogin()+"', '"+user.getPwd()+");");
-			query.close();
+			//System.out.println(user.toString());
+			int rs = query.executeUpdate("INSERT INTO `user` (`lastname`, `surname`,`age`, `login`, `pwd`)VALUES ('"+ user.getLastname()+"', '"+user.getSurname()+"', "+user.getAge()+", '"+user.getLogin()+"', '"+user.getPwd()+"');");			query.close();
 			connection.close();
 		}catch (SQLException e){
 			e.printStackTrace();
