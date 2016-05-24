@@ -1,15 +1,24 @@
-package step2.model;
+package step3.model;
 
-import java.io.Serializable;
-
-public class UserModelBean implements Serializable {
+public class UserModelBean {
 	private String lastname;
 	private String surname;
 	private int age;
 	private String login;
 	private String pwd;
 	
-	public UserModelBean(){	
+	public UserModelBean(){
+		
+	}
+	
+	public UserModelBean(String lastname, String surname, int age,
+			String login, String pwd) {
+		super();
+		this.lastname = lastname;
+		this.surname = surname;
+		this.age = age;
+		this.login = login;
+		this.pwd = pwd;
 	}
 
 	public String getLastname() {
@@ -58,4 +67,8 @@ public class UserModelBean implements Serializable {
 				+ ", age=" + age + ", login=" + login + ", pwd=" + pwd + "]";
 	}
 	
+	
+	
+	
+
 }

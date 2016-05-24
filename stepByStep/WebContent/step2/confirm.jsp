@@ -1,19 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="UTF-8"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; harset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Step 2: Confirmation</title>
-	<jsp:useBean id="myUser" scope="session" classe="step2.model.UserModelBean"/>
-		<jsp:setProperty property="myUser" name="surename"/>
-		<jsp:setProperty property="myUser" name="lastname"/>
-		<jsp:setProperty property="myUser" name="age"/>
-		<jsp:setProperty property="myUser" name="login"/>
-		<jsp:setProperty property="myUser" name="pwd"/>
+	<jsp:useBean id="myUser" scope="session" class="step2.model.UserModelBean" />
+		<jsp:setProperty name="myUser" property="surname"/>
+		<jsp:setProperty name="myUser" property="lastname"/>
+		<jsp:setProperty name="myUser" property="age"/>
+		<jsp:setProperty name="myUser" property="login"/>
+		<jsp:setProperty name="myUser" property="pwd"/>
+			<!--<jsp:setProperty property="*" name="myUser"/-->
+		
 </head>
 <body>
-	<form action="../Servlet3" methode="post">
+	<form action="../Servlet3" method="post">
 		Save Data?
 			<input type="submit" value="YES">
 	</form>
