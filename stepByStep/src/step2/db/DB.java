@@ -1,4 +1,4 @@
-package step1.db;
+package step2.db;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import step1.model.UserModel;
+import step2.model.UserModelBean;
 
 public class DB {
 	private static final String DB_HOST ="db-tp.cpe.fr";
@@ -31,8 +32,8 @@ public class DB {
 //		connection.close();
 	//}
 	
-	public ArrayList<UserModel> getData(){
-		ArrayList<UserModel> userList= new ArrayList<UserModel>();
+	public ArrayList<UserModelBean> getData(){
+		ArrayList<UserModelBean> userList= new ArrayList<UserModelBean>();
 		
 		try{
 			java.sql.Statement query= connection.createStatement();
@@ -40,7 +41,12 @@ public class DB {
 			///TODO:
 			ResultSet rs = query.executeQuery("SELECT * FROM user");
 			while (rs.next()) {
-				UserModel us = new UserModel(rs.getString("surname") , rs.getString("pwd"), rs.getInt("age"), rs.getString("lastname"), rs.getString("login"));
+				UserModelBean us = new UserModelBean();
+				us.setAge(rs.getInt("age"));
+				us.setLastname(rs.getString("lastname"));
+				us.setLogin(rs.getString("login"));
+				us.setPwd(rs.getString("pwd"));
+				us.setSurename(rs.getString("surname"));
 				userList.add(us);
 			}
 			query.close();
@@ -52,13 +58,14 @@ public class DB {
 		return userList;
 	}
 	
-	public void addUser(UserModel user){
+	public void addUser(UserModelBean user){
 		java.sql.Statement query;
 		try{
 			query = connection.createStatement();
 			///TODO
 			//System.out.println(user.toString());
-			int rs = query.executeUpdate("INSERT INTO `user` (`lastname`, `surname`,`age`, `login`, `pwd`)VALUES ('"+ user.getLastname()+"', '"+user.getSurname()+"', "+user.getAge()+", '"+user.getLogin()+"', '"+user.getPwd()+"');");			query.close();
+			int rs = query.executeUpdate("INSERT INTO `user` (`lastname`, `surname`,`age`, `login`, `pwd`)VALUES ('"+ user.getLastname()+"', '"+user.getSurename()+"', "+user.getAge()+", '"+user.getLogin()+"', '"+user.getPwd()+"');");			
+			query.close();
 			connection.close();
 		}catch (SQLException e){
 			e.printStackTrace();
