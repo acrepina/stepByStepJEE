@@ -46,7 +46,7 @@ public class DB {
 				us.setLastname(rs.getString("lastname"));
 				us.setLogin(rs.getString("login"));
 				us.setPwd(rs.getString("pwd"));
-				us.setSurename(rs.getString("surname"));
+				us.setSurname(rs.getString("surname"));
 				userList.add(us);
 			}
 			query.close();
@@ -64,7 +64,7 @@ public class DB {
 			query = connection.createStatement();
 			///TODO
 			//System.out.println(user.toString());
-			int rs = query.executeUpdate("INSERT INTO `user` (`lastname`, `surname`,`age`, `login`, `pwd`)VALUES ('"+ user.getLastname()+"', '"+user.getSurename()+"', "+user.getAge()+", '"+user.getLogin()+"', '"+user.getPwd()+"');");			
+			int rs = query.executeUpdate("INSERT INTO `user` (`lastname`, `surname`,`age`, `login`, `pwd`)VALUES ('"+ user.getLastname()+"', '"+user.getSurname()+"', "+user.getAge()+", '"+user.getLogin()+"', '"+user.getPwd()+"');");			
 			query.close();
 			connection.close();
 		}catch (SQLException e){

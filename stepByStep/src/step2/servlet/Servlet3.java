@@ -67,7 +67,7 @@ public class Servlet3 extends HttpServlet {
 			response.getWriter().write(generalContent+"error parameter"+generalEnd);
 		}
 		
-		response.sendRedirect("/step2/display.jsp");
+		response.sendRedirect("step2/display.jsp");
 	}
 
 }
