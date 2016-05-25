@@ -1,4 +1,4 @@
-package step3.fabric;
+package step3.instance;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -48,7 +48,7 @@ public class RecipiesDao {
 			ps.setString(6, recipe.getType());
 
 			ps.executeUpdate();
-			ps.executeQuery();
+			//ps.executeQuery();
 			connection.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -71,10 +71,12 @@ public class RecipiesDao {
 			ResultSet rs = query.executeQuery("SELECT * FROM recipes");
 			while (rs.next()) {
 				RecipeModelBean rmb = new RecipeModelBean(rs.getString("title"), rs.getString("description"), rs.getInt("expertise"), rs.getInt("nbPeople"), rs.getInt("duration"), rs.getString("type"));
+				//System.out.println(rs.getString("title")+ rs.getString("description") +rs.getInt("expertise")+ rs.getInt("nbPeople") +rs.getInt("duration")+rs.getString("type"));
 						//rs.getString("lastname") , rs.getString("surname"), rs.getInt("age"), rs.getString("login"), rs.getString("pwd"));
 				recipeList.add(rmb);
 				
 			}
+			
 			query.close();
 			rs.close();
 		} catch (SQLException e) {
