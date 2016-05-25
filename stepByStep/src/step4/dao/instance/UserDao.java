@@ -92,6 +92,9 @@ public class UserDao {
 				user.setPwd(rs.getString("pwd"));
 				user.setSurname(rs.getString("surname"));
 			}
+			else{
+				user=null;
+			}
 			querySt.close();
 			rs.close();
 			//connection.close();

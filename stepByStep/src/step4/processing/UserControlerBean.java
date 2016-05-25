@@ -2,6 +2,8 @@ package step4.processing;
 
 import java.util.Map;
 
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -11,6 +13,8 @@ import step4.model.LoginBean;
 import step4.model.UserSubmissionModelBean;
 import step4.model.UserModelBean;;
 
+@ManagedBean
+@ApplicationScoped
 public class UserControlerBean {
 		private UserDao userDao;
 		
@@ -26,7 +30,7 @@ public class UserControlerBean {
 			ExternalContext externalContex = FacesContext.getCurrentInstance().getExternalContext();
 			Map<String, Object> sessionMap = externalContex.getSessionMap();
 			
-			sessionMap.put("loggesUser", user);
+			sessionMap.put("loggedUser", user);
 			
 			return "userdisplay.xhtml";
 		}else{
