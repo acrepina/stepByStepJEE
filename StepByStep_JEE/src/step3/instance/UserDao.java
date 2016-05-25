@@ -6,8 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import step1.model.UserModel;
-import step2.model.UserModelBean;
+import step3.model.UserModelBean;
+
+
 
 public class UserDao {
 
@@ -44,7 +45,7 @@ public class UserDao {
 			ps.setString(5, user.getPwd());
 
 			ps.executeUpdate();
-			ps.executeQuery();
+			//ps.executeQuery();
 			connection.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -79,6 +80,9 @@ public class UserDao {
 		
 
 	}
+
+
+
 
 
 

@@ -69,6 +69,12 @@ public class RecipeModelBean {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+	@Override
+	public String toString() {
+		return "RecipeModelBean [title=" + title + ", description=" + description + ", expertise=" + expertise
+				+ ", nbpeople=" + nbpeople + ", duration=" + duration + ", type=" + type + "]";
+	}
 	
 	
 

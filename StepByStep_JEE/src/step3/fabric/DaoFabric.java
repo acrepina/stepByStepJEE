@@ -1,5 +1,6 @@
 package step3.fabric;
 
+import step3.instance.RecipiesDao;
 import step3.instance.UserDao;
 
 public class DaoFabric {
