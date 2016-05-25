@@ -1,12 +1,11 @@
-package step3.dao.instance;
+package step4.dao.instance;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import step2.model.UserModelBean;
-import step3.model.RecipeModelBean;
+import step4.model.RecipeModel;
 
 import com.mysql.jdbc.PreparedStatement;
 
@@ -26,7 +25,7 @@ public class RecipesDao {
 		dB_PWD=DB_PWD;
 	}
 
-	public void addRecipe(RecipeModelBean recipe){
+	public void addRecipe(RecipeModel recipe){
 		try{
 			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"+dB_HOST+":"+dB_PORT+"/"+dB_NAME, dB_USER, dB_PWD);
 			
@@ -45,8 +44,8 @@ public class RecipesDao {
 		}
 	}
 	
-	public ArrayList<RecipeModelBean> getAllRecipe(){
-		ArrayList<RecipeModelBean> recipesList = new ArrayList<RecipeModelBean>();
+	public ArrayList<RecipeModel> getAllRecipe(){
+		ArrayList<RecipeModel> recipesList = new ArrayList<RecipeModel>();
 		try{
 			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"+dB_HOST+":"+dB_PORT+"/"+dB_NAME, dB_USER, dB_PWD);
 			PreparedStatement querySt = (PreparedStatement) connection.prepareStatement("SELECT * FROM recipes");
@@ -54,7 +53,7 @@ public class RecipesDao {
 			ResultSet rs= querySt.executeQuery();
 			
 			while (rs.next()) {
-				RecipeModelBean recip = new RecipeModelBean();
+				RecipeModel recip = new RecipeModel();
 				recip.setTitle(rs.getString("title"));
 				recip.setDescription(rs.getString("description"));
 				recip.setExpertise(rs.getInt("expertise"));
@@ -72,4 +71,5 @@ public class RecipesDao {
 		}
 		return recipesList;
 	}
+
 }

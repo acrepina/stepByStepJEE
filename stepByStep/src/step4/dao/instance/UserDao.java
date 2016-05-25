@@ -1,16 +1,15 @@
-package step3.dao.instance;
+package step4.dao.instance;
 
 import java.sql.Connection;
-import step3.model.UserModelBean;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
-import com.mysql.jdbc.PreparedStatement;
-
+import step4.model.UserModelBean;
 
 public class UserDao {
+
 	private Connection connection;
 	private static  String dB_HOST ;
 	private static  String dB_PORT;
@@ -74,6 +73,33 @@ public class UserDao {
 		}
 		return userList;
 
+	}
+
+	public UserModelBean checkUser(String login, String pwd) {
+		UserModelBean user= new UserModelBean();
+		try{
+			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"+dB_HOST+":"+dB_PORT+"/"+dB_NAME, dB_USER, dB_PWD);
+			PreparedStatement querySt = (PreparedStatement) connection.prepareStatement("SELECT * FROM user AS u WHERE u.login=? AND u.pwd=?");
+			querySt.setString(1, login);
+			querySt.setString(2, pwd);
+			
+			ResultSet rs= querySt.executeQuery();
+			
+			if(rs.next()){
+				user.setAge(rs.getInt("age"));
+				user.setLastname(rs.getString("lastname"));
+				user.setLogin(rs.getString("login"));
+				user.setPwd(rs.getString("pwd"));
+				user.setSurname(rs.getString("surname"));
+			}
+			querySt.close();
+			rs.close();
+			//connection.close();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		
+		return user;
 	}
 
 }

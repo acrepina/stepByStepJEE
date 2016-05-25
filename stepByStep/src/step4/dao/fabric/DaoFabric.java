@@ -1,7 +1,8 @@
-package step3.dao.fabric;
+package step4.dao.fabric;
 
-import step3.dao.instance.RecipesDao;
-import step3.dao.instance.UserDao;
+import step4.dao.fabric.DaoFabric;
+import step4.dao.instance.RecipesDao;
+import step4.dao.instance.UserDao;
 
 public class DaoFabric {
 	private static volatile DaoFabric instance = null;
@@ -42,9 +43,5 @@ public class DaoFabric {
 		return receipesDao;
 	}
 
-	public step4.dao.instance.UserDao checkUser(String login, String pwd) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

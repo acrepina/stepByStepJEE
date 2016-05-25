@@ -1,8 +1,14 @@
-package step3.model;
+package step4.model;
 
 import java.io.Serializable;
 
-public class UserModelBean implements Serializable{
+import javax.annotation.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+
+@ManagedBean
+@SessionScoped
+public class UserModelBean implements Serializable {
 	private String lastname;
 	private String surname;
 	private int age;
@@ -10,8 +16,8 @@ public class UserModelBean implements Serializable{
 	private String pwd;
 	
 	public UserModelBean(){
-		
-	}
+			
+		}
 	
 	public UserModelBean(String lastname, String surname, int age,
 			String login, String pwd) {
@@ -68,9 +74,4 @@ public class UserModelBean implements Serializable{
 		return "UserModelBean [lastname=" + lastname + ", surname=" + surname
 				+ ", age=" + age + ", login=" + login + ", pwd=" + pwd + "]";
 	}
-	
-	
-	
-	
-
 }
